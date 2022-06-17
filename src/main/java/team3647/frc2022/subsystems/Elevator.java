@@ -18,7 +18,7 @@ public class Elevator implements PeriodicSubsystem {
     private VictorSPX rightFollower;
 
     public class PeriodicIO {
-        public double elevatorPositionl = 0;
+        public double elevatorPosition1 = 0;
     }
 
     public Elevator(
