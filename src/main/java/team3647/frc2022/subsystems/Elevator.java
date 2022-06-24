@@ -4,6 +4,7 @@
 
 package team3647.frc2022.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -11,14 +12,17 @@ import team3647.lib.PeriodicSubsystem;
 
 /** Add your docs here. */
 public class Elevator implements PeriodicSubsystem {
-    private DigitalInput bannerSensor;
-    private TalonSRX leftMaster;
-    private TalonSRX rightMaster;
-    private VictorSPX leftFollower;
-    private VictorSPX rightFollower;
+    private final DigitalInput bannerSensor;
+    private final TalonSRX leftMaster;
+    private final TalonSRX rightMaster;
+    private final VictorSPX leftFollower;
+    private final VictorSPX rightFollower;
 
-    public class PeriodicIO {
-        public double elevatorPosition1 = 0;
+    private PeriodicIO pIO = new PeriodicIO();
+
+    public static class PeriodicIO {
+        public ControlMode ctrlMode = ControlMode.PercentOutput;
+        public double demand = 0;
     }
 
     public Elevator(
@@ -34,11 +38,25 @@ public class Elevator implements PeriodicSubsystem {
         this.rightFollower = rightFollower;
     }
 
-    public void openLoop(double input) {}
+    @Override
+    public void readPeriodicInputs() {}
+
+    @Override
+    public void writePeriodicOutputs() {
+        leftMaster.set(pIO.ctrlMode, pIO.demand);
+        rightMaster.set(pIO.ctrlMode, pIO.demand);
+        leftFollower.set(pIO.ctrlMode, pIO.demand);
+        rightFollower.set(pIO.ctrlMode, pIO.demand);
+    }
+
+    public void setOpenLoop(double demand) {
+        pIO.ctrlMode = ControlMode.PercentOutput;
+        pIO.demand = demand;
+    }
 
     @Override
     public String getName() {
         // TODO Auto-generated method stub
-        return null;
+        return "Elevator";
     }
 }

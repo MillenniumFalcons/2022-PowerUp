@@ -20,6 +20,7 @@ public class ElevatorConstants {
 
     public static VictorSPXConfiguration getLeftFollowerConfig() {
         VictorSPXConfiguration config = new VictorSPXConfiguration();
+        return config;
     }
 
     static {
