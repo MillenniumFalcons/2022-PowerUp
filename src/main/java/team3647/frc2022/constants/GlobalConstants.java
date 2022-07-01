@@ -14,28 +14,27 @@ package team3647.frc2022.constants;
  */
 public final class GlobalConstants {
     public static final class DrivetrainIds {
-        public static final int leftDriveMasterPin = 0;
-        public static final int leftDriveSlave1Pin = 0;
-        public static final int leftDriveSlave2Pin = 0;
-
-        public static final int rightDriveMasterPin = 0;
-        public static final int rightDriveSlave1Pin = 0;
-        public static final int rightDriveSlave2Pin = 0;
+        public static final int leftDriveMasterPin = 57;
+        public static final int rightDriveMasterPin = 54;
+        public static final int rightDriveSlave1Pin = 58;
+        public static final int rightDriveSlave2Pin = 59;
+        public static final int leftDriveSlave1Pin = 52;
+        public static final int leftDriveSlave2Pin = 53;
     }
 
     public static final class IntakeIds {
         public static final int intakeLeftPiston = 2;
         public static final int intakeRightPiston = 3;
-        public static final int leftIntakePin = 0;
-        public static final int rightIntakePin = 0;
+        public static final int leftIntakePin = 55;
+        public static final int rightIntakePin = 56;
     }
 
     public static final class ElevatorIds {
-        public static final int leftMasterPin = 0;
-        public static final int leftFollowerPin = 0;
+        public static final int leftMasterPin = 52;
+        public static final int leftFollowerPin = 54;
 
-        public static final int rightMasterPin = 0;
-        public static final int rightFollowerPin = 0;
+        public static final int rightMasterPin = 62;
+        public static final int rightFollowerPin = 57;
 
         public static final int bannerSensorPin = 0;
     }
