@@ -13,7 +13,8 @@ import team3647.lib.PeriodicSubsystem;
 public class Grabber implements PeriodicSubsystem {
     private final Solenoid grabPiston1;
     private final Solenoid grabPiston2;
-    private final VictorSPX intakeMotor;
+    private final VictorSPX leftIntakeMotor;
+    private final VictorSPX rightIntakeMotor;
 
     private PeriodicIO pIO = new PeriodicIO();
 
@@ -23,10 +24,15 @@ public class Grabber implements PeriodicSubsystem {
         public boolean pistonExtended = false;
     }
 
-    public Grabber(Solenoid grabPiston1, Solenoid grabPiston2, VictorSPX intakeMotor) {
+    public Grabber(
+            Solenoid grabPiston1,
+            Solenoid grabPiston2,
+            VictorSPX leftIntakeMotor,
+            VictorSPX rightIntakeMotor) {
         this.grabPiston1 = grabPiston1;
         this.grabPiston2 = grabPiston2;
-        this.intakeMotor = intakeMotor;
+        this.rightIntakeMotor = rightIntakeMotor;
+        this.leftIntakeMotor = leftIntakeMotor;
     }
 
     @Override
@@ -36,7 +42,8 @@ public class Grabber implements PeriodicSubsystem {
     public void writePeriodicOutputs() {
         this.grabPiston1.set(pIO.pistonExtended);
         this.grabPiston2.set(pIO.pistonExtended);
-        this.intakeMotor.set(pIO.intakeControlMode, pIO.intakeDemand);
+        this.rightIntakeMotor.set(pIO.intakeControlMode, pIO.intakeDemand);
+        this.leftIntakeMotor.set(pIO.intakeControlMode, pIO.intakeDemand);
     }
 
     public void clamp() {
@@ -50,11 +57,13 @@ public class Grabber implements PeriodicSubsystem {
     public void intake() {
         pIO.intakeControlMode = ControlMode.PercentOutput;
         pIO.intakeDemand = 0.4;
+        clamp();
     }
 
     public void outtake() {
         pIO.intakeControlMode = ControlMode.PercentOutput;
         pIO.intakeDemand = -0.4;
+        clamp();
     }
 
     @Override

@@ -1,6 +1,5 @@
 package team3647.frc2022.constants;
 
-import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
@@ -13,10 +12,10 @@ public class ElevatorConstants {
             new DigitalInput(GlobalConstants.ElevatorIds.bannerSensorPin);
     public static final TalonSRX leftMaster =
             new LazyTalonSRX(GlobalConstants.ElevatorIds.leftMasterPin);
-    public static final VictorSPX leftSlave =
-            new VictorSPX(GlobalConstants.ElevatorIds.leftFollowerPin);
     public static final TalonSRX rightMaster =
             new LazyTalonSRX(GlobalConstants.ElevatorIds.rightMasterPin);
+    public static final VictorSPX leftSlave =
+            new VictorSPX(GlobalConstants.ElevatorIds.leftFollowerPin);
     public static final VictorSPX rightSlave =
             new VictorSPX(GlobalConstants.ElevatorIds.rightFollowerPin);
 
@@ -45,7 +44,7 @@ public class ElevatorConstants {
         leftSlave.configAllSettings(leftSlaveConfig);
         rightSlave.configAllSettings(rightSlaveConfig);
 
-        rightMaster.setInverted(InvertType.InvertMotorOutput);
-        rightSlave.setInverted(InvertType.InvertMotorOutput);
+        rightMaster.setInverted(true);
+        rightSlave.setInverted(true);
     }
 }

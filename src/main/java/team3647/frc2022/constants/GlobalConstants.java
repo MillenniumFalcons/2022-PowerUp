@@ -4,6 +4,8 @@
 
 package team3647.frc2022.constants;
 
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -13,6 +15,8 @@ package team3647.frc2022.constants;
  * constants are needed, to reduce verbosity.
  */
 public final class GlobalConstants {
+    public static final PneumaticsModuleType PCMType = PneumaticsModuleType.CTREPCM;
+
     public static final class DrivetrainIds {
         public static final int leftDriveMasterPin = 57;
         public static final int rightDriveMasterPin = 54;
@@ -22,7 +26,7 @@ public final class GlobalConstants {
         public static final int leftDriveSlave2Pin = 53;
     }
 
-    public static final class IntakeIds {
+    public static final class GrabberIds {
         public static final int intakeLeftPiston = 2;
         public static final int intakeRightPiston = 3;
         public static final int leftIntakePin = 55;

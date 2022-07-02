@@ -11,10 +11,10 @@ import team3647.lib.PeriodicSubsystem;
 
 public class Drivetrain implements PeriodicSubsystem {
     private final TalonSRX leftMaster;
+    private final TalonSRX rightMaster;
+
     private final VictorSPX leftSlave1;
     private final VictorSPX leftSlave2;
-
-    private final TalonSRX rightMaster;
     private final VictorSPX rightSlave1;
     private final VictorSPX rightSlave2;
 
@@ -29,9 +29,9 @@ public class Drivetrain implements PeriodicSubsystem {
 
     public Drivetrain(
             TalonSRX leftMaster,
+            TalonSRX rightMaster,
             VictorSPX leftSlave1,
             VictorSPX leftSlave2,
-            TalonSRX rightMaster,
             VictorSPX rightSlave1,
             VictorSPX rightSlave2) {
         this.leftMaster = leftMaster;
